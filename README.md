@@ -1,7 +1,7 @@
 
 # DataBerry Cluster
 
-DataBerry Cluster offers wide range of APIs pertaining to multiple domains primarily but built on core vision of problem solving. 
+DataBerry Cluster offers wide range of APIs pertaining to multiple domains primarily built on core vision of problem solving. 
 
 1) DataBerry-QualityAssurance API for **Real-time Data Quality Validation**
 2) DataBerry-Detoxifier API for **Toxic Comments Classification**
