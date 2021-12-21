@@ -13,10 +13,12 @@ Choose specific end-points that match your requirements from DataBerry cluster.
 
 ## API Reference
 
-#### DataBerry Cluster API
+### DataBerry Cluster API
 
 
 | Endpoint        | Method   |   Description              |
 | :--------       | :------- | :------------------------- |
 | `/text_quality` | `POST`   | Text Quality Analysis API  |
 | `/personal_identifier`| `POST` | Personal Identifier API |
+| `/translate` | `POST` | Text Translator API | 
+| `/datacleaner` | `POST` | Text Data Cleaner API | 
