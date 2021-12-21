@@ -39,3 +39,6 @@ Given a text input, the API will extract all `personal information` such as
 - Names
 - Geo-location
 - Phone Number
+
+### 3) DataBerry Cluster Cleaner API
+Given a text input, the Cleaner API will remove unwanted `stopwords`, `html tags` and `user-defined words` from the input text.
