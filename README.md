@@ -38,17 +38,18 @@ URL Link : https://databerry_cluster.com/text_quality
 
 JSON Input
 ```console
-{"text": "The patient ordered a pizza and soon after eating it went to ICU in the most dreadfully horrible way."}
+{"text": "The patient ordered a pizza and soon after eating it went to ICU in the most dreadfully horrible way and much more story to go."}
 ```
 
 JSON Output:
 ```
 {
- "language":"english",
- "count_of_words":21,
- "query_length":209,
- "toxicity":0
- }
+    "count_of_words": 26,
+    "count_unique_words": 24,
+    "language": "english",
+    "query_length": 127,
+    "toxicity": 0
+}
 ```
 
 ### 2) Personal Identifier API
@@ -59,6 +60,26 @@ Given a text input, the API will extract all `personal information` such as
 - Names
 - Geo-location
 - Phone Number
+
+Input URL
+```console
+URL Link : https://databerry_cluster.com/personal_identifier
+```
+
+JSON Input
+```console
+{"text":"Hi Sukanthen,i was born on Oct 15 1999 in Neyveli, @ sukanthen1999@gmail.com. I am a male human with phone number 2A +1-541-754-3010."}
+```
+
+JSON Output:
+```
+{
+    "dates": "1999-10-15",
+    "email": "sukanthen1999@gmail.com.",
+    "gender": "male",
+    "phone_number": "+1-541-754-3010"
+}
+```
 
 ### 3) DataBerry Cluster Cleaner API
 Given a text input, the Cleaner API will remove unwanted `stopwords`, `html tags` and `user-defined words` from the input text.
