@@ -31,6 +31,26 @@ Given a text input, the API will return
 - Toxicity Level / Score
 - Text Sentiment Score
 
+Input URL
+```console
+URL Link : https://databerry_cluster.com/text_quality
+```
+
+JSON Input
+```console
+{"text": "The patient ordered a pizza and soon after eating it went to ICU in the most dreadfully horrible way."}
+```
+
+JSON Output:
+```
+{
+ "language":"english",
+ "count_of_words":21,
+ "query_length":209,
+ "toxicity":0
+ }
+```
+
 ### 2) Personal Identifier API
 Given a text input, the API will extract all `personal information` such as
 - Dates (Y-M-D Format)
