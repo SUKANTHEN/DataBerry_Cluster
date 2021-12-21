@@ -1,6 +1,6 @@
 
 # DataBerry Cluster
-## - For a Safe, secure, Postive Digital World
+## - For a Safe, Secure and Positive Digital World
 
 DataBerry Cluster offers wide range of APIs pertaining to multiple domains primarily built on core vision of problem solving. 
 
