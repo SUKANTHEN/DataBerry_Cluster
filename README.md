@@ -22,3 +22,6 @@ Choose specific end-points that match your requirements from DataBerry cluster.
 | `/personal_identifier`| `POST` | Personal Identifier API |
 | `/translate` | `POST` | Text Translator API | 
 | `/datacleaner` | `POST` | Text Data Cleaner API | 
+
+### 1) Text Quality Analysis API
+<p>  Given a text input, the API will return language, number of words, query length (after all empty unwanted white-spaces removed),and toxicity level of input text. </p>
