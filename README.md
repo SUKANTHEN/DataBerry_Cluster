@@ -24,4 +24,7 @@ Choose specific end-points that match your requirements from DataBerry cluster.
 | `/datacleaner` | `POST` | Text Data Cleaner API | 
 
 ### 1) Text Quality Analysis API
-<p>  Given a text input, the API will return language, number of words, query length (after all empty unwanted white-spaces removed),and toxicity level of input text. </p>
+<p>  Given a text input, the API will return <b>language</b>, <b>number of words</b>,<b>query length</b> (after all empty unwanted white-spaces removed),and <b>toxicity level</b> of input text. </p> 
+
+### 2) Personal Identifier API
+Given a text input, the API will extract all `personal information` such as  <b>dates</b>(in y-m-d format), <b>phone number</b>,<b>email</b>,<b>gender</b>.
