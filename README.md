@@ -28,6 +28,7 @@ Given a text input, the API will return
 - Query Language
 - Number of Words
 - Query Length
+- Gibberish Score
 - Toxicity Level / Score
 - Text Sentiment Score
 
