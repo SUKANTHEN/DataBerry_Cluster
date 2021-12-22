@@ -35,7 +35,3 @@ def auto_datacleaner(data,remove_stopwords=False,stopwords_list=None,remove_html
     else:
         cleandata = data
     return cleandata
-
-df = "I played my best knwona and if the wasn't my best game ever in my life my mine you and <html fuadf abq>"
-x = auto_datacleaner(df,remove_html=True,remove_stopwords=True,stopwords_list=None)
-print(x)
