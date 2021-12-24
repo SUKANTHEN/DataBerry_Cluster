@@ -7,3 +7,4 @@ Flask-RESTful==0.3.9
 nltk==3.6.2
 flashtext==2.7
 datefinder==0.7.1
+gunicorn==2.1.0
