@@ -14,15 +14,13 @@ from flask_httpauth import HTTPBasicAuth
 from flask import jsonify
 from stopwords_remover import auto_datacleaner
 from toxic_words import toxic_words_identifier,toxic_word_replacer
-###########################
-app = Flask(__name__)######
-###########################
-auth = HTTPBasicAuth()#####
-###########################
-translator = Translator()##
-###########################
+
+app = Flask(__name__)
+auth = HTTPBasicAuth()
+translator = Translator()
+
 #---------- Basic Auth ---------#
-USER_DATA = {"admin":"sukan@icliniq.com@technology"}
+USER_DATA = {"sukanthen1999@gmail.com":"qIvHjDn8@fi45%vid$9y","safeeksanu625@gmail.com":"Tb#&isgbn^fsjgb7u3ye","nuras1999@gmail.com":"*kau%hg856boutgabvd^"}
 
 @auth.verify_password
 def user_verifier(username,password):
