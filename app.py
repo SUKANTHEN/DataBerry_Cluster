@@ -13,7 +13,7 @@ from flask_restful import Resource,Api
 from flask_httpauth import HTTPBasicAuth
 from flask import jsonify
 from stopwords_remover import auto_datacleaner
-from toxic_words import toxic_words_identifier
+from toxic_words import toxic_words_identifier,toxic_word_replacer
 ###########################
 app = Flask(__name__)######
 ###########################
@@ -100,6 +100,18 @@ def data_cleaner():
         remove_sw = request_data["remove_stopwords"]
         stopwords = request_data["stopwords_list"]
         x = auto_datacleaner(text,remove_html=remove_html,remove_stopwords=remove_sw,stopwords_list=stopwords)
+        data = {"cleaned_text":x}
+        data = jsonify(data)
+    return data
+
+#----- Detoxifier API ----#
+@app.route('/detoxify', methods=['POST'])
+@auth.login_required
+def detoxifier():
+    if request.method == 'POST':
+        request_data = request.get_json()
+        text = request_data['text']
+        x = toxic_word_replacer(text)
         data = {"cleaned_text":x}
         data = jsonify(data)
     return data
