@@ -10,3 +10,14 @@ def toxic_words_identifier(data):
     return 0
   else:
     return 1
+
+def toxic_word_replacer(text):
+  kwp = KeywordProcessor(case_sensitive=False)
+  kwp.add_keywords_from_list(toxic_words_list)
+  result = kwp.extract_keywords(text,span_info=True)
+  for i in result:
+    words = text[int(i[1]):int(i[2])]
+    length_of_words = len(words)
+    fix_word = "*" * length_of_words
+    text = text.replace(words,fix_word)
+  return text
