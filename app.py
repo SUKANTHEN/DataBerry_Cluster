@@ -44,7 +44,8 @@ def legality_checker():
         all_words,len_all_words = word_counter(text)
         clean_text,len_clean_text = query_length_finder(text) # Spaces removed
         toxicity = toxic_words_identifier(text)
-        data = {"language":lang,"count of words":len_all_words,"query length":len_clean_text,"toxicity":toxicity}
+        all_words = set(all_words)
+        data = {"language":lang,"count_of_words":len_all_words,"count_unique_words":len(all_words),"query_length":len_clean_text,"toxicity":toxicity}
         data = jsonify(data)
     return data
 
