@@ -14,11 +14,15 @@ from flask_httpauth import HTTPBasicAuth
 from flask import jsonify
 from stopwords_remover import auto_datacleaner
 from toxic_words import toxic_words_identifier,toxic_word_replacer
+from catboost import CatBoostClassifier, Pool
 
 app = Flask(__name__)
 auth = HTTPBasicAuth()
 translator = Translator()
-
+###############################################
+DataberryML = CatBoostClassifier()           
+DataberryML.load_model('models/catmodel.cbm')
+###############################################
 #---------- Basic Auth ---------#
 USER_DATA = {"sukanthen1999@gmail.com":"qIvHjDn8@fi45%vid$9y","safeeksanu625@gmail.com":"Tb#&isgbn^fsjgb7u3ye","nuras1999@gmail.com":"*kau%hg856boutgabvd^"}
 
@@ -112,6 +116,17 @@ def detoxifier():
         text = request_data['text']
         x = toxic_word_replacer(text)
         data = {"cleaned_text":x}
+        data = jsonify(data)
+    return data
+
+@app.route('/gibberish_check', methods=['POST'])
+@auth.login_required
+def gibberish_check():
+    if request.method == 'POST':
+        request_data = request.get_json()
+        text = request_data['text']
+        pred = DataberryML.predict([text])
+        data = {"gibberish_data":int(pred)}
         data = jsonify(data)
     return data
 
