@@ -6,18 +6,18 @@ from html_remover import cleanhtml
 Function to remove built-in stopwords
 """
 def built_in_stopwords_removal(data):
-    data = data.lower()
+    #data = data.lower()
     words = word_tokenize(data)
-    cleandata = (" ").join([word for word in words if not word in stopwords.words("english")])
+    cleandata = (" ").join([word for word in words if not word.lower() in stopwords.words("english")])
     return cleandata
 ########################################
 """
 Function to remove custom defined stopwords
 """
 def user_defined_stopwords_removal(data,stopwords_list):
-    data = data.lower()
+    #data = data.lower()
     words = word_tokenize(data)
-    cleandata = (" ").join([word for word in words if not word in stopwords_list])
+    cleandata = (" ").join([word for word in words if not word.lower() in stopwords_list])
     return cleandata
 ########################################
 def auto_datacleaner(data,remove_stopwords=False,stopwords_list=None,remove_html=False):
