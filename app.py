@@ -35,7 +35,23 @@ def user_verifier(username,password):
 #------------- Home Page --------------#
 @app.route('/',methods=['GET', 'POST'])
 def index():
-    return 'Welcome to DataBerry Cluster API'
+    return render_template("index.html")
+    #return 'Welcome to DataBerry Cluster API'
+
+#------------- Create Auth Tokens Page --------------#
+@app.route('/home.html',methods=['GET', 'POST'])
+def home_page():
+    return render_template("home.html")
+
+#------------- 404 HTML Page  --------------#
+@app.route('/404.html',methods=['GET', 'POST'])
+def error_page():
+    return render_template("404.html")
+
+#------------- Create Auth Tokens Page --------------#
+@app.route('/login.html',methods=['GET', 'POST'])
+def login_page():
+    return render_template("login.html")
 
 #----------- Text Quality End-point --------------#
 @app.route('/text_quality', methods=['POST'])
