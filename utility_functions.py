@@ -17,6 +17,3 @@ def nan_none_validator(var):
     else:
         var = var
     return var
-
-x = nan_none_validator("False")
-print(x)
