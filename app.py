@@ -23,15 +23,6 @@ translator = Translator()
 DataberryML = CatBoostClassifier()           
 DataberryML.load_model('models/catmodel.cbm')
 ###############################################
-#---------- Basic Auth ---------#
-USER_DATA = {"sukanthen1999@gmail.com":"qIvHjDn8@fi45%vid$9y","safeeksanu625@gmail.com":"Tb#&isgbn^fsjgb7u3ye","nuras1999@gmail.com":"*kau%hg856boutgabvd^"}
-
-@auth.verify_password
-def user_verifier(username,password):
-    if not (username and password):
-        return False
-    return USER_DATA.get(username) == password
-
 #------------- Home Page --------------#
 @app.route('/',methods=['GET', 'POST'])
 def index():
@@ -55,7 +46,6 @@ def login_page():
 
 #----------- Text Quality End-point --------------#
 @app.route('/text_quality', methods=['POST'])
-@auth.login_required
 def legality_checker():
     if request.method == 'POST':
         request_data = request.get_json()
@@ -71,7 +61,6 @@ def legality_checker():
 
 #----------- Personal Identifier End-point --------------#
 @app.route('/personal_identifier', methods=['POST'])
-@auth.login_required
 def personal_identifier():
     if request.method == 'POST':
         request_data = request.get_json()
@@ -110,7 +99,6 @@ def translator():
 
 #----- Auto Data Cleaner ----#
 @app.route('/datacleaner', methods=['POST'])
-@auth.login_required
 def data_cleaner():
     if request.method == 'POST':
         request_data = request.get_json()
@@ -125,7 +113,6 @@ def data_cleaner():
 
 #----- Detoxifier API ----#
 @app.route('/detoxify', methods=['POST'])
-@auth.login_required
 def detoxifier():
     if request.method == 'POST':
         request_data = request.get_json()
@@ -136,7 +123,6 @@ def detoxifier():
     return data
 
 @app.route('/gibberish_check', methods=['POST'])
-@auth.login_required
 def gibberish_check():
     if request.method == 'POST':
         request_data = request.get_json()
@@ -147,4 +133,4 @@ def gibberish_check():
     return data
 
 if __name__ == '__main__':
-    app.run(debug=True,host = '0.0.0.0',port=8080)
+    app.run(debug=False,host = '0.0.0.0',port=8080)
