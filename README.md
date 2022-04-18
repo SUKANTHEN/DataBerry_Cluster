@@ -40,7 +40,7 @@ Given a text input, the API will return
 
 Input URL
 ```console
-URL Link : https://databerry_cluster.com/text_quality
+URL Link : https://databerrycluster.herokuapp.com/text_quality
 ```
 
 JSON Input
