@@ -139,6 +139,31 @@ JSON Output:
 }
 ```
 <br>
+
+## 5) Validator API
+Personality Identification is an important part of KYC. However, it takes time. To validate your user at the very next second, it always good to check if the identity ID they are typing are `valid`. Some of them are Aadhaar card, PAN Card, Driving License, Credit cards etc. Given Personality Identifier Numbers as input,the Validator API will return in less than milliseconds if they are valid customer ID.
+
+Input URL
+```console
+URL Link : https://databerry_cluster.com/e-validation
+```
+
+JSON Input
+```console
+# Dialogue from American Series Silicon Valley (Season 1)
+{
+"data":"ABCXY1234Z",
+"type_data":"pancard"
+}
+```
+
+JSON Output:
+```
+{
+    "validID":1
+}
+```
+<br>
 <br>
 
 ## 🔗 Links
