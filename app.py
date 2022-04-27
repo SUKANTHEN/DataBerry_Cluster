@@ -15,6 +15,7 @@ from flask import jsonify
 from stopwords_remover import auto_datacleaner
 from toxic_words import toxic_words_identifier,toxic_word_replacer
 from catboost import CatBoostClassifier, Pool
+from validation_identifiables import keys_for_validation,Document_Number_validator
 
 app = Flask(__name__)
 auth = HTTPBasicAuth()
@@ -23,6 +24,8 @@ translator = Translator()
 DataberryML = CatBoostClassifier()           
 DataberryML.load_model('models/catmodel.cbm')
 ###############################################
+#---------- Basic Auth ---------#
+
 #------------- Home Page --------------#
 @app.route('/',methods=['GET', 'POST'])
 def index():
@@ -44,8 +47,14 @@ def error_page():
 def login_page():
     return render_template("login.html")
 
+#------------- Thanks Page --------------#
+@app.route('/thanks.html',methods=['GET', 'POST'])
+def thanks_page():
+    return render_template("thanks.html")
+
 #----------- Text Quality End-point --------------#
 @app.route('/text_quality', methods=['POST'])
+#@auth.login_required
 def legality_checker():
     if request.method == 'POST':
         request_data = request.get_json()
@@ -61,6 +70,7 @@ def legality_checker():
 
 #----------- Personal Identifier End-point --------------#
 @app.route('/personal_identifier', methods=['POST'])
+#@auth.login_required
 def personal_identifier():
     if request.method == 'POST':
         request_data = request.get_json()
@@ -99,6 +109,7 @@ def translator():
 
 #----- Auto Data Cleaner ----#
 @app.route('/datacleaner', methods=['POST'])
+#@auth.login_required
 def data_cleaner():
     if request.method == 'POST':
         request_data = request.get_json()
@@ -113,6 +124,7 @@ def data_cleaner():
 
 #----- Detoxifier API ----#
 @app.route('/detoxify', methods=['POST'])
+#@auth.login_required
 def detoxifier():
     if request.method == 'POST':
         request_data = request.get_json()
@@ -123,6 +135,7 @@ def detoxifier():
     return data
 
 @app.route('/gibberish_check', methods=['POST'])
+#@auth.login_required
 def gibberish_check():
     if request.method == 'POST':
         request_data = request.get_json()
@@ -132,5 +145,22 @@ def gibberish_check():
         data = jsonify(data)
     return data
 
+@app.route('/e-validator', methods=['POST'])
+#@auth.login_required
+def validation_check():
+    if request.method == 'POST':
+        request_data = request.get_json()
+        text = request_data['data']
+        check_type = request_data['type_data']
+        if check_type in keys_for_validation:
+            regex_check_type = keys_for_validation[check_type]
+            validID = Document_Number_validator(regex_check_type,text)
+            data = {"validID":validID}
+            data = jsonify(data)
+        else:
+            val = ",".join(keys_for_validation)
+            data = f"Invalid Personal Identifier. We currently support {val} only"
+    return data
+
 if __name__ == '__main__':
-    app.run(debug=False,host = '0.0.0.0',port=8080)
+    app.run(debug=True,host = '0.0.0.0',port=8080)
