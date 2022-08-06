@@ -8,4 +8,4 @@ nltk==3.6.2
 flashtext==2.7
 datefinder==0.7.1
 gunicorn==20.1.0
-catboost==0.26
+catboost==1.0.6
